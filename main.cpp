@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <arpa/inet.h>
 
-// 4바이트 정수를 파일에서 읽어오는 함수
 uint32_t read_number_from_file(const char *filename) {
 	FILE *file = fopen(filename, "rb");
         if (!file) {
@@ -27,9 +26,9 @@ int main(int argc, char *argv[]) {
 	uint32_t sum = 0;
 	for (int i = 1; i < argc; i++) {
 		uint32_t num = read_number_from_file(argv[i]);
-		printf("%u(0x%08x)%s", num, num, (i == argc - 1) ? " = " : " + ");
+		printf("%u(0x%04x)%s", num, num, (i == argc - 1) ? " = " : " + ");
 		sum += num;
 	}
-	printf("%u(0x%08x)\n", sum, sum);
+	printf("%u(0x%04x)\n", sum, sum);
 	return EXIT_SUCCESS;
 }
